@@ -1,11 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Bakery
 {
     public class Cake
     {
-        string orderNo;
-
+        List<Ingredient> cakeIngredients = new List<Ingredient>();
     }
 
     public interface IPaymentHandler {
@@ -43,6 +43,8 @@ namespace Bakery
 
     public class Order
     {
+        int orderNo;
+        List<Cake> cakeOrder = new List<Cake>();
 
     }
 
