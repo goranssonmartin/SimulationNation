@@ -9,4 +9,8 @@
     <PackageReference Include="ConsoleSimulationEngine2000" Version="2.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Bakery\Bakery.csproj" />
+  </ItemGroup>
+
 </Project>
