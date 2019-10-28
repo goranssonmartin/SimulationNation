@@ -1,14 +1,44 @@
-﻿namespace Bakery
+﻿using System.Collections.Generic;
+
+namespace Bakery
 {
-    public class MediumCake : Cake
+    public class MediumCake : ICake
     {
-        MediumCake()
+
+        public int Cost
         {
-            bakeTime = 25;
-            cost = 50;
-            CakeIngredients.Add(new Sugar());
-            CakeIngredients.Add(new Butter());
-            CakeIngredients.Add(new Egg());
+            get
+            {
+                return 100;
+            }
+            set
+            {
+
+            }
+        }
+
+        public int BakeTime
+        {
+            get
+            {
+                return 25;
+            }
+            set
+            {
+
+            }
+        }
+        public List<IIngredient> CakeIngredients
+        {
+            get
+            {
+                return new List<IIngredient>() { new Sugar(), new Butter(), new Egg() };
+
+            }
+            set
+            {
+
+            }
         }
 
     }

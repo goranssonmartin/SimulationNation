@@ -1,19 +1,43 @@
-﻿namespace Bakery
-{
-    public class LargeCake : Cake
-    {
+﻿using System.Collections.Generic;
 
-        LargeCake()
+namespace Bakery
+{
+    public class LargeCake : ICake
+    {
+        public int Cost
         {
-            bakeTime = 50;
-            cost = 150;
-            CakeIngredients.Add(new Sugar());
-            CakeIngredients.Add(new Sugar());
-            CakeIngredients.Add(new Butter());
-            CakeIngredients.Add(new Butter());
-            CakeIngredients.Add(new Egg());
-            CakeIngredients.Add(new Egg());
-            CakeIngredients.Add(new Egg());
+            get
+            {
+                return 200;
+            }
+            set
+            {
+
+            }
+        }
+
+        public int BakeTime
+        {
+            get
+            {
+                return 50;
+            }
+            set
+            {
+
+            }
+        }
+        public List<IIngredient> CakeIngredients
+        {
+            get
+            {
+                return new List<IIngredient>() { new Sugar(), new Sugar(), new Butter(), new Butter(), new Egg(), new Egg(), new Egg() };
+
+            }
+            set
+            {
+
+            }
         }
     }
 }

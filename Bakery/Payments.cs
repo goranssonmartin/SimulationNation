@@ -1,17 +1,35 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Bakery
 {
     public class Payments : IPaymentHandler
     {
-        public void AcceptPayment(int currentMoney, int newMoney)
+        public int AcceptPayment(int currentMoney, int income)
         {
-            currentMoney = currentMoney - newMoney;
+            return currentMoney - income;
         }
 
-        public void PayBakers()
+        public int HandlePantryPayment(int currentMoney, int moneyToPay)
         {
-            foreach
+            return currentMoney-moneyToPay;
         }
+
+        public int PayBakers(int currentMoney, List<Worker> listOfBakers)
+        {
+            int totalPayments = 0;
+            foreach (Worker baker in listOfBakers)
+            {
+                totalPayments = totalPayments + baker.Salary;
+            }
+            return currentMoney - totalPayments;
+        }
+
+        public int PayRent(int currentMoney)
+        {
+            return currentMoney - 1000;
+        }
+
+
     }
 }

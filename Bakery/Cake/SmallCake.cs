@@ -2,16 +2,44 @@
 
 namespace Bakery
 {
-    public class SmallCake : Cake
+    public class SmallCake : ICake
     {
-        SmallCake()
+        public int Cost
         {
-            BakeTime = 15;
-            Cost = 25;
-            CakeIngredients = new List<Ingredient>() { new Sugar(), new Butter() };
+            get
+            {
+                return 60;
+            }
+            set
+            {
+
+            }
         }
 
-        
+        public int BakeTime
+        {
+            get
+            {
+                return 15;
+            }
+            set
+            {
+
+            }
+        }
+        public List<IIngredient> CakeIngredients
+        {
+            get
+            {
+                return new List<IIngredient>() { new Sugar(), new Butter() };
+            }
+            set
+            {
+
+            }
+        }
+
+
     }
 
 }

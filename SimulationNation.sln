@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29326.143
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimulationNation", "SimulationNation\SimulationNation.csproj", "{1076258E-D3EC-4AD5-9A41-C778A3C237F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bakery", "Bakery\Bakery.csproj", "{DEDAED44-8E1C-4693-A71A-E652C4017EEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bakery", "Bakery\Bakery.csproj", "{DEDAED44-8E1C-4693-A71A-E652C4017EEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BakeryTests", "BakeryTests\BakeryTests.csproj", "{E71EBB01-B251-4A48-A7DA-D75FC636F347}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{DEDAED44-8E1C-4693-A71A-E652C4017EEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEDAED44-8E1C-4693-A71A-E652C4017EEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEDAED44-8E1C-4693-A71A-E652C4017EEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E71EBB01-B251-4A48-A7DA-D75FC636F347}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E71EBB01-B251-4A48-A7DA-D75FC636F347}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E71EBB01-B251-4A48-A7DA-D75FC636F347}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E71EBB01-B251-4A48-A7DA-D75FC636F347}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
