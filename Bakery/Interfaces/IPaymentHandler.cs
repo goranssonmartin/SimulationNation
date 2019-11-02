@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Bakery
+namespace BakeryLibrary
 {
     public interface IPaymentHandler
     {

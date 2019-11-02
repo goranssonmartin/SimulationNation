@@ -1,94 +1,62 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Bakery
+namespace BakeryLibrary
 {
     public class Bakery
     {
 
         public int currentMoney;
-        List<Worker> listOfBakers = new List<Worker>();
-
-        List<Customer> listOfCustomers = new List<Customer>();
-        Dictionary<string, int> pantry = new Dictionary<string, int>();
+        public List<Customer> listOfCustomers { get; private set; }
+        public List<Worker> listOfBakers { get; private set; }
+        public List<Order> listOfOrders { get; private set; }
+        public Dictionary<string, int> pantry { get; private set; }
         public Bakery()
         {
             currentMoney = 5000;
+            listOfCustomers = new List<Customer>();
+            listOfBakers = new List<Worker>();
+            listOfOrders = new List<Order>();
+            pantry = new Dictionary<string, int>();
             pantry.Add("Sugar", 100);
             pantry.Add("Egg", 100);
             pantry.Add("Butter", 100);
         }
 
-        public Dictionary<string, int> ReturnPantry() {
-            return pantry;
-        }
 
-        public List<Worker> ReturnBakers()
+
+        public void HireBaker(DateTime actualTime)
         {
-            return listOfBakers;
+            listOfBakers.Add(new Baker(actualTime));
         }
 
-        public List<Customer> ReturnCustomers()
+        public void HireApprentice(DateTime actualTime)
         {
-            return listOfCustomers;
+            listOfBakers.Add(new BakerApprentice(actualTime));
         }
 
-        public void HireBaker() {
-            listOfBakers.Add(new Baker());
-        }
-
-        public void HireApprentice()
+        public void UseUpIngredient(Order order)
         {
-            listOfBakers.Add(new BakerApprentice());
-        }
+            foreach (var cake in order.CakeOrder) {
+                foreach (var ingredient in cake.CakeIngredients)
+                {
+                    if (pantry[ingredient.Name] > 1)
+                    {
+                        pantry[ingredient.Name] -= 1;
+                    }
 
-        public void GetNewCustomer()
-        {
-            listOfCustomers.Add(new Customer());
-        }
-
-        public void FillPantry(string ingredient)
-        {
-            Sugar sugar = new Sugar();
-            Egg egg = new Egg();
-            Butter butter = new Butter();
-            Payments payments = new Payments();
-
-            if (ingredient == "Sugar")
-            {
-                int sugarToBuyCost = (100 - pantry["Sugar"]) * sugar.Cost;
-                currentMoney = payments.HandlePantryPayment(currentMoney, sugarToBuyCost);
-                pantry["Sugar"] = 100;
-            }
-            else if (ingredient == "Egg")
-            {
-                int eggToBuyCost = (100 - pantry["Egg"]) * egg.Cost;
-                currentMoney = payments.HandlePantryPayment(currentMoney, eggToBuyCost);
-                pantry["Egg"] = 100;
-            }
-            else if (ingredient == "Butter")
-            {
-                int butterToBuyCost = (100 - pantry["Butter"]) * butter.Cost;
-                currentMoney = payments.HandlePantryPayment(currentMoney, butterToBuyCost);
-                pantry["Butter"] = 100;
+                    else {
+                        FillPantry(ingredient.Name, ingredient.Cost);
+                    }
+                }
             }
         }
-
-        public void UseUpIngredient(string ingredient, int quantity)
+        public void FillPantry(string ingredient, int cost)
         {
-            if (pantry[ingredient] > quantity)
-            {
-                pantry[ingredient] = pantry[ingredient] - quantity;
-            }
-            else if (pantry[ingredient] <= quantity)
-            {
-                FillPantry(ingredient);
-                UseUpIngredient(ingredient, quantity);
-            }
+            pantry[ingredient] = 100;
+            currentMoney = currentMoney - cost * 100;
         }
 
-        
     }
-
 
 }

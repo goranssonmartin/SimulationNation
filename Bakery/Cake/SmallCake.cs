@@ -1,42 +1,19 @@
 ﻿using System.Collections.Generic;
 
-namespace Bakery
+namespace BakeryLibrary
 {
     public class SmallCake : ICake
     {
-        public int Cost
+        public int Cost { get; set; }
+
+        public int BakeTime { get; set; }
+        public List<IIngredient> CakeIngredients { get; set; }
+
+        public SmallCake()
         {
-            get
-            {
-                return 60;
-            }
-            set
-            {
-
-            }
-        }
-
-        public int BakeTime
-        {
-            get
-            {
-                return 15;
-            }
-            set
-            {
-
-            }
-        }
-        public List<IIngredient> CakeIngredients
-        {
-            get
-            {
-                return new List<IIngredient>() { new Sugar(), new Butter() };
-            }
-            set
-            {
-
-            }
+            Cost = 90;
+            BakeTime = 15;
+            CakeIngredients = new List<IIngredient>() { new Sugar(), new Butter() };
         }
 
 

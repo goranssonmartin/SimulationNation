@@ -1,4 +1,4 @@
-﻿namespace Bakery
+﻿namespace BakeryLibrary
 {
     public interface IIngredient
     {

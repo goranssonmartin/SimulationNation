@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Bakery
+namespace BakeryLibrary
 {
     public class Payments : IPaymentHandler
     {
         public int AcceptPayment(int currentMoney, int income)
         {
-            return currentMoney - income;
+            return currentMoney + income;
         }
 
         public int HandlePantryPayment(int currentMoney, int moneyToPay)
@@ -18,9 +18,9 @@ namespace Bakery
         public int PayBakers(int currentMoney, List<Worker> listOfBakers)
         {
             int totalPayments = 0;
-            foreach (Worker baker in listOfBakers)
+            foreach (Worker worker in listOfBakers)
             {
-                totalPayments = totalPayments + baker.Salary;
+                totalPayments = totalPayments + worker.Salary;
             }
             return currentMoney - totalPayments;
         }

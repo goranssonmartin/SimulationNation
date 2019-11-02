@@ -1,24 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Bakery
+namespace BakeryLibrary
 {
     public class Order
     {
-        public List<ICake> cakeOrder = new List<ICake>();
-
-        public int CalcTotalCost(List<ICake> cakeList)
-        {
-            int returnValue = 0;
-            foreach (ICake c in cakeList)
-            {
-                returnValue = returnValue + c.Cost;
-            }
-
-            return returnValue;
+        public List<ICake> CakeOrder { get; private set; }
+        public DateTime OrderCompleteTime { get; private set; }
+        public Worker WorkerResponsibleForOrder { get; private set; }
+        public Customer CustomerWhoOrdered { get; private set; }
+        public int OrderCost { get; set; }
+        public Order(DateTime orderStartTime, Worker workerResponsibleForOrder, Customer customerWhoOrdered) {
+            this.CakeOrder = GenerateOrder();
+            this.WorkerResponsibleForOrder = workerResponsibleForOrder;
+            this.CustomerWhoOrdered = customerWhoOrdered;
+            OrderCompleteTime = CalcOrderTime(orderStartTime);
+            OrderCost = CalcOrderCost();
         }
 
-        public List<ICake> GenerateOrder()
+        private int CalcOrderCost()
+        {
+            int totalCost = 0;
+            foreach (ICake c in CakeOrder) {
+                totalCost += c.Cost;
+            } 
+            return totalCost;
+        }
+
+        private DateTime CalcOrderTime(DateTime orderStartTime)
+        {
+            DateTime completeTime=orderStartTime;
+            foreach (ICake c in CakeOrder) {
+                completeTime = completeTime.AddMinutes(c.BakeTime/WorkerResponsibleForOrder.BakeEfficiency);
+            }
+            return completeTime;
+        }
+
+        private List<ICake> GenerateOrder()
         {
             Random rnd = new Random();
             int whatToOrder = rnd.Next(1, 4);
@@ -56,6 +74,5 @@ namespace Bakery
             }
 
         }
-
     }
 }

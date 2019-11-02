@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Bakery
+namespace BakeryLibrary
 {
     public class Customer
     {
