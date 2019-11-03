@@ -7,8 +7,7 @@ namespace BakeryLibrary
         public BakerApprentice(DateTime hiredDate)
         {
             NameGenerator name = new NameGenerator();
-            FirstName = name.GenerateFirstName();
-            LastName = name.GenerateLastName();
+            Name = name.GenerateFirstName() + " " + name.GenerateLastName();
             BakeEfficiency = 1;
             IsWorking = false;
             WorkTitle = "Baker Apprentice";

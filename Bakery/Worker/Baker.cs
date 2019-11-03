@@ -8,8 +8,7 @@ namespace BakeryLibrary
         public Baker(DateTime hiredDate)
         {
             NameGenerator name = new NameGenerator();
-            FirstName = name.GenerateFirstName();
-            LastName = name.GenerateLastName();
+            Name = name.GenerateFirstName() + " " +name.GenerateLastName();
             BakeEfficiency = 2;
             IsWorking = false;
             WorkTitle = "Baker";
@@ -18,10 +17,9 @@ namespace BakeryLibrary
         }
 
         //for promoting apprentice to real baker
-        public Baker(string firstName, string lastName, DateTime hiredDate, bool isWorking)
+        public Baker(string name, DateTime hiredDate, bool isWorking)
         {
-            FirstName = firstName;
-            LastName = lastName;
+            Name = name;
             BakeEfficiency = 2;
             IsWorking = isWorking;
             WorkTitle = "Baker";
@@ -32,7 +30,6 @@ namespace BakeryLibrary
         public override int CalculateSalary(int bakeEfficiency)
         {
             return bakeEfficiency * 500;
-
         }
 
     }

@@ -4,8 +4,7 @@ namespace BakeryLibrary
 {
     public abstract class Worker
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string Name { get; set; }
         public bool IsWorking { get; set; }
         public int BakeEfficiency { get; set; }
         public DateTime HiredDate { get; set; }
