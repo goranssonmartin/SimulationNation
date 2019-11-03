@@ -6,7 +6,7 @@ As a user you can start and pause the simulation, and hire either a Baker or a B
 An order will also have a property describing the customer of that order, this property is the used to give visual feedback to the user whenever a new order is made or when an order is completed.
 
 # Design Patterns
-I have made use of two different types of design patterns in this project.
+I have made use of two different design patterns in this project.
 
 The first one is command, which executes a valid command based on the users input. Each command is its own class, and inherits the ICommand interface.
 
