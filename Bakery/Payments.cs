@@ -12,7 +12,7 @@ namespace BakeryLibrary
 
         public int HandlePantryPayment(int currentMoney, int moneyToPay)
         {
-            return currentMoney-moneyToPay;
+            return currentMoney - moneyToPay;
         }
 
         public int PayBakers(int currentMoney, List<Worker> listOfBakers)

@@ -4,8 +4,8 @@ namespace BakeryLibrary
 {
     public class NameGenerator
     {
-        private string[] firstNames = { "Lara", "Jeremy", "Mark", "Tony", "Jon","Bruce","Alan","Ellen","Barbara","Emily" };
-        private string[] lastNames = { "Croft", "Usbourne", "Corrigan", "Stark", "Snow","Wayne","Wake","Ripley","Gordon", "Kaldwin" };
+        private string[] firstNames = { "Lara", "Jeremy", "Mark", "Tony", "Jon", "Bruce", "Alan", "Ellen", "Barbara", "Emily" };
+        private string[] lastNames = { "Croft", "Usbourne", "Corrigan", "Stark", "Snow", "Wayne", "Wake", "Ripley", "Gordon", "Kaldwin" };
         public string GenerateFirstName()
         {
             Random rnd = new Random();

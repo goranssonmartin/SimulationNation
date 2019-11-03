@@ -11,16 +11,17 @@ namespace BakeryTests
         {
             BakeryLibrary.Bakery bakery = new BakeryLibrary.Bakery();
             bakery.HireBaker();
-            Assert.AreEqual(1,bakery.listOfBakers().Count);
+            Assert.AreEqual(1, bakery.listOfBakers().Count);
         }
 
         [Test]
-        public void TestIfPayingBakersWork() {
+        public void TestIfPayingBakersWork()
+        {
             Payments payments = new Payments();
             BakeryLibrary.Bakery bakery = new BakeryLibrary.Bakery();
             bakery.HireBaker();
             bakery.HireApprentice();
-            Assert.AreEqual(3500,payments.PayBakers(5000, bakery.listOfBakers()));
+            Assert.AreEqual(3500, payments.PayBakers(5000, bakery.listOfBakers()));
         }
     }
 }

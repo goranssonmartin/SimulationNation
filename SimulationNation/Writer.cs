@@ -10,14 +10,16 @@ namespace SimulationNation
     public class Writer
     {
         public List<ICommand> ListOfCommands { get; set; }
-        public Writer() { 
-        ListOfCommands = new List<ICommand>() { new StartSimulation(), new HireBaker(), new HireBakerApprentice(), new StopSimulation() };
+        public Writer()
+        {
+            ListOfCommands = new List<ICommand>() { new StartSimulation(), new HireBaker(), new HireBakerApprentice(), new StopSimulation() };
         }
 
         internal string[] CommandWriter()
-        {            
+        {
             string[] arrayOfCommands = new string[ListOfCommands.Count];
-            for (int i = 0; i < ListOfCommands.Count; i++) {
+            for (int i = 0; i < ListOfCommands.Count; i++)
+            {
                 arrayOfCommands[i] = i + 1 + ". " + ListOfCommands[i].CommandName;
             }
             return arrayOfCommands;
@@ -29,7 +31,8 @@ namespace SimulationNation
             {
                 return bakery.listOfBakers.Last().Name + " hired!" + " (" + bakery.listOfBakers.Last().WorkTitle + ")";
             }
-            else {
+            else
+            {
                 return "You have reached the maximum number of bakers";
             }
         }

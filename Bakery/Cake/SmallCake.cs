@@ -7,13 +7,14 @@ namespace BakeryLibrary
         public int Cost { get; set; }
 
         public int BakeTime { get; set; }
-        public List<IIngredient> CakeIngredients { get; set; }
-
+        public List<Ingredient> CakeIngredients { get; set; }
+        private Sugar sugar = Sugar.GetInstance();
+        private Butter butter = Butter.GetInstance();
         public SmallCake()
         {
             Cost = 90;
             BakeTime = 15;
-            CakeIngredients = new List<IIngredient>() { new Sugar(), new Butter() };
+            CakeIngredients = new List<Ingredient>() { sugar, butter};
         }
 
 

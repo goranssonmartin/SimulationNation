@@ -1,6 +1,5 @@
 ﻿using BakeryLibrary;
 using ConsoleSimulationEngine2000;
-using SimulationNation.Commands;
 using System;
 using System.Collections.Generic;
 namespace SimulationNation
@@ -17,9 +16,6 @@ namespace SimulationNation
         private DateTime currentDay;
         private int simulationDay;
 
-
-
-
         private RollingDisplay newOrdersLog = new RollingDisplay(0, 0, 75, 12);
         private RollingDisplay completedOrdersLog = new RollingDisplay(74, 0, 76, 12);
         private BorderedDisplay pantryDisplay = new BorderedDisplay(0, 13, 42, 3) { };
@@ -28,8 +24,6 @@ namespace SimulationNation
         private BorderedDisplay clockDisplay = new BorderedDisplay(0, 11, 22, 3) { };
         private BorderedDisplay workingBakers = new BorderedDisplay(0, 15, 42, 10) { };
         public readonly RollingDisplay logForBakeryRelatedUpdates = new RollingDisplay(41, 15, 77, 10) { };
-
-
 
         public MySimulation(ConsoleGUI gui, TextInput input)
         {
@@ -68,7 +62,7 @@ namespace SimulationNation
             {
                 actualTime = actualTime.AddMinutes(30);
                 string newOrderString = bakery.GenerateNewOrder(actualTime);
-                string orderCompleteString =bakery.CheckIfOrderIsComplete(actualTime, payments);
+                string orderCompleteString = bakery.CheckIfOrderIsComplete(actualTime, payments);
                 string apprenticeUpgradeString = bakery.UpgradeApprentice(actualTime);
                 if (newOrderString != "")
                 {
@@ -105,7 +99,6 @@ namespace SimulationNation
 
         public void ExecuteCommand(string commandToExecute, MySimulation simulation)
         {
-
             try
             {
                 int commandIndex = int.Parse(commandToExecute) - 1;

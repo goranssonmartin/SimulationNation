@@ -10,7 +10,8 @@ namespace BakeryLibrary
         public Worker WorkerResponsibleForOrder { get; private set; }
         public Customer CustomerWhoOrdered { get; private set; }
         public int OrderCost { get; set; }
-        public Order(DateTime orderStartTime, Worker workerResponsibleForOrder, Customer customerWhoOrdered) {
+        public Order(DateTime orderStartTime, Worker workerResponsibleForOrder, Customer customerWhoOrdered)
+        {
             this.CakeOrder = GenerateOrder();
             this.WorkerResponsibleForOrder = workerResponsibleForOrder;
             this.CustomerWhoOrdered = customerWhoOrdered;
@@ -21,17 +22,19 @@ namespace BakeryLibrary
         private int CalcOrderCost()
         {
             int totalCost = 0;
-            foreach (ICake c in CakeOrder) {
+            foreach (ICake c in CakeOrder)
+            {
                 totalCost += c.Cost;
-            } 
+            }
             return totalCost;
         }
 
         private DateTime CalcOrderTime(DateTime orderStartTime)
         {
-            DateTime completeTime=orderStartTime;
-            foreach (ICake c in CakeOrder) {
-                completeTime = completeTime.AddMinutes(c.BakeTime/WorkerResponsibleForOrder.BakeEfficiency);
+            DateTime completeTime = orderStartTime;
+            foreach (ICake c in CakeOrder)
+            {
+                completeTime = completeTime.AddMinutes(c.BakeTime / WorkerResponsibleForOrder.BakeEfficiency);
             }
             return completeTime;
         }

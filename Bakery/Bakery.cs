@@ -40,11 +40,11 @@ namespace BakeryLibrary
             string returnString = "";
             for (int i = 0; i < listOfBakers.Count; i++)
             {
-                DateTime test =listOfBakers[i].HiredDate.AddDays(7);
+                DateTime test = listOfBakers[i].HiredDate.AddDays(7);
                 if (listOfBakers[i].WorkTitle == "Baker Apprentice" && test.Day < actualTime.Day)
                 {
                     listOfBakers[i] = new Baker(listOfBakers[i].Name, listOfBakers[i].HiredDate, listOfBakers[i].IsWorking);
-                    returnString=listOfBakers[i].Name + " is now a fully trained baker";
+                    returnString = listOfBakers[i].Name + " is now a fully trained baker";
                 }
             }
             return returnString;
@@ -58,7 +58,7 @@ namespace BakeryLibrary
                 Customer c = new Customer();
                 listOfCustomers.Add(c);
                 Order order = new Order(actualTime, worker, c);
-                returnString= c.Name + " has entered the bakery and made an order!";
+                returnString = c.Name + " has entered the bakery and made an order!";
                 listOfOrders.Add(order);
             }
             return returnString;
@@ -86,7 +86,7 @@ namespace BakeryLibrary
                 if (listOfOrders[i].OrderCompleteTime < actualTime)
                 {
                     UseUpIngredient(listOfOrders[i]);
-                    returnString=(listOfOrders[i].CustomerWhoOrdered.Name + "s " + "order complete, " + listOfOrders[i].OrderCost + " schmeckles added to cash register");
+                    returnString = (listOfOrders[i].CustomerWhoOrdered.Name + "s " + "order complete, " + listOfOrders[i].OrderCost + " schmeckles added to cash register");
                     currentMoney = payments.AcceptPayment(currentMoney, listOfOrders[i].OrderCost);
                     listOfOrders.RemoveAt(i);
                 }
@@ -96,7 +96,8 @@ namespace BakeryLibrary
 
         public void UseUpIngredient(Order order)
         {
-            foreach (var cake in order.CakeOrder) {
+            foreach (var cake in order.CakeOrder)
+            {
                 foreach (var ingredient in cake.CakeIngredients)
                 {
                     if (pantry[ingredient.Name] > 1)
@@ -104,7 +105,8 @@ namespace BakeryLibrary
                         pantry[ingredient.Name] -= 1;
                     }
 
-                    else {
+                    else
+                    {
                         FillPantry(ingredient.Name, ingredient.Cost);
                     }
                 }

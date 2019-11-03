@@ -7,7 +7,8 @@ namespace SimulationNation.Commands
     class StopSimulation : ICommand
     {
         public string CommandName { get; set; }
-        public StopSimulation() {
+        public StopSimulation()
+        {
             CommandName = "Stop";
         }
         public void Execute(MySimulation simulation)

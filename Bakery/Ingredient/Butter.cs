@@ -1,15 +1,26 @@
 ﻿namespace BakeryLibrary
 {
-    public class Butter : IIngredient
+    public sealed class Butter : Ingredient
     {
-        public Butter()
+        public override string Name { get; set; }
+        public override int Cost { get; set; }
+        private Butter()
         {
             Name = "Butter";
             Cost = 15;
         }
+        private static Butter instance;
 
-        public string Name { get; set; }
-        public int Cost { get; set; }
+        public static Butter GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new Butter();
+            }
+            return instance;
+        }
+
+
 
     }
 }
