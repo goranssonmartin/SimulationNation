@@ -13,8 +13,11 @@ namespace SimulationNation.Commands
         }
         public void Execute(MySimulation simulation)
         {
-            simulation.generateCustomers = true;
-            simulation.logForBakeryRelatedUpdates.Log("Simulation started");
+            if (simulation.generateCustomers == false)
+            {
+                simulation.generateCustomers = true;
+                simulation.logForBakeryRelatedUpdates.Log("Simulation started");
+            }
         }
     }
 }

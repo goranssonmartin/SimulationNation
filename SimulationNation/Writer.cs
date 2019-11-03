@@ -9,13 +9,16 @@ namespace SimulationNation
 {
     public class Writer
     {
-        internal string[] CommandWriter()
-        {
+        public List<ICommand> ListOfCommands { get; set; }
+        public Writer() { 
+        ListOfCommands = new List<ICommand>() { new StartSimulation(), new HireBaker(), new HireBakerApprentice(), new StopSimulation() };
+        }
 
-            List<ICommand> listOfCommands = new List<ICommand>() { new StartSimulation(), new HireBaker(),new HireBakerApprentice(), new StopSimulation() };
-            string[] arrayOfCommands = new string[listOfCommands.Count];
-            for (int i = 0; i < listOfCommands.Count; i++) {
-                arrayOfCommands[i] = i + 1 + ". " + listOfCommands[i].CommandName;
+        internal string[] CommandWriter()
+        {            
+            string[] arrayOfCommands = new string[ListOfCommands.Count];
+            for (int i = 0; i < ListOfCommands.Count; i++) {
+                arrayOfCommands[i] = i + 1 + ". " + ListOfCommands[i].CommandName;
             }
             return arrayOfCommands;
         }
@@ -27,8 +30,18 @@ namespace SimulationNation
                 return bakery.listOfBakers.Last().Name + " hired!" + " (" + bakery.listOfBakers.Last().WorkTitle + ")";
             }
             else {
-                return "you have reached the maximum number of bakers";
+                return "You have reached the maximum number of bakers";
             }
+        }
+
+        public string[] WorkingBakers(Bakery bakery)
+        {
+            string[] arrayOfBakers = new string[bakery.listOfBakers.Count];
+            for (int i = 0; i < bakery.listOfBakers.Count; i++)
+            {
+                arrayOfBakers[i] = i + 1 + ". " + bakery.listOfBakers[i].Name + " (" + bakery.listOfBakers[i].WorkTitle + ")";
+            }
+            return arrayOfBakers;
         }
     }
 }

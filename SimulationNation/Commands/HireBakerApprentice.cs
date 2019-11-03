@@ -13,8 +13,11 @@ namespace SimulationNation.Commands
         }
         public void Execute(MySimulation simulation)
         {
-            simulation.bakery.HireApprentice(simulation.actualTime);
-            simulation.logForBakeryRelatedUpdates.Log(simulation.writer.HiredWriter(simulation.bakery));
+            if (simulation.bakery.listOfBakers.Count < 9)
+            {
+                simulation.bakery.HireApprentice(simulation.actualTime);
+                simulation.logForBakeryRelatedUpdates.Log(simulation.writer.HiredWriter(simulation.bakery));
+            }
         }
     }
 }

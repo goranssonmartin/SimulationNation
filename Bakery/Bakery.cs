@@ -35,6 +35,65 @@ namespace BakeryLibrary
             listOfBakers.Add(new BakerApprentice(actualTime));
         }
 
+        public string UpgradeApprentice(DateTime actualTime)
+        {
+            string returnString = "";
+            for (int i = 0; i < listOfBakers.Count; i++)
+            {
+                DateTime test =listOfBakers[i].HiredDate.AddDays(7);
+                if (listOfBakers[i].WorkTitle == "Baker Apprentice" && test.Day < actualTime.Day)
+                {
+                    listOfBakers[i] = new Baker(listOfBakers[i].Name, listOfBakers[i].HiredDate, listOfBakers[i].IsWorking);
+                    returnString=listOfBakers[i].Name + " is now a fully trained baker";
+                }
+            }
+            return returnString;
+        }
+        public string GenerateNewOrder(DateTime actualTime)
+        {
+            string returnString = "";
+            Worker worker = AssignWorker();
+            if (listOfOrders.Count < listOfBakers.Count)
+            {
+                Customer c = new Customer();
+                listOfCustomers.Add(c);
+                Order order = new Order(actualTime, worker, c);
+                returnString= c.Name + " has entered the bakery and made an order!";
+                listOfOrders.Add(order);
+            }
+            return returnString;
+        }
+
+        private Worker AssignWorker()
+        {
+            Worker worker = null;
+            foreach (Worker w in listOfBakers)
+            {
+                if (w.IsWorking == false)
+                {
+                    worker = w;
+                    return worker;
+                }
+            }
+            return worker;
+        }
+
+        public string CheckIfOrderIsComplete(DateTime actualTime, Payments payments)
+        {
+            string returnString = "";
+            for (int i = listOfOrders.Count - 1; i >= 0; i--)
+            {
+                if (listOfOrders[i].OrderCompleteTime < actualTime)
+                {
+                    UseUpIngredient(listOfOrders[i]);
+                    returnString=(listOfOrders[i].CustomerWhoOrdered.Name + "s " + "order complete, " + listOfOrders[i].OrderCost + " schmeckles added to cash register");
+                    currentMoney = payments.AcceptPayment(currentMoney, listOfOrders[i].OrderCost);
+                    listOfOrders.RemoveAt(i);
+                }
+            }
+            return returnString;
+        }
+
         public void UseUpIngredient(Order order)
         {
             foreach (var cake in order.CakeOrder) {
