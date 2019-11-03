@@ -3,16 +3,11 @@ using System.Collections.Generic;
 
 namespace BakeryLibrary
 {
-    public class Payments : IPaymentHandler
+    public class Payment : IPaymentHandler
     {
         public int AcceptPayment(int currentMoney, int income)
         {
             return currentMoney + income;
-        }
-
-        public int HandlePantryPayment(int currentMoney, int moneyToPay)
-        {
-            return currentMoney - moneyToPay;
         }
 
         public int PayBakers(int currentMoney, List<Worker> listOfBakers)

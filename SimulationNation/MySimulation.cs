@@ -7,7 +7,7 @@ namespace SimulationNation
     public class MySimulation : Simulation
     {
         public readonly Bakery bakery = new Bakery();
-        private Payments payments = new Payments();
+        private Payment payments = new Payment();
         public readonly Writer writer = new Writer();
         public bool generateCustomers = false;
         private ConsoleGUI gui;

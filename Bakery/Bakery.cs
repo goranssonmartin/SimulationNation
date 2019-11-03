@@ -40,8 +40,8 @@ namespace BakeryLibrary
             string returnString = "";
             for (int i = 0; i < listOfBakers.Count; i++)
             {
-                DateTime test = listOfBakers[i].HiredDate.AddDays(7);
-                if (listOfBakers[i].WorkTitle == "Baker Apprentice" && test.Day < actualTime.Day)
+                DateTime aWeekFromHiringDate = listOfBakers[i].HiredDate.AddDays(6);
+                if (listOfBakers[i].WorkTitle == "Baker Apprentice" && aWeekFromHiringDate.Day < actualTime.Day)
                 {
                     listOfBakers[i] = new Baker(listOfBakers[i].Name, listOfBakers[i].HiredDate, listOfBakers[i].IsWorking);
                     returnString = listOfBakers[i].Name + " is now a fully trained baker";
@@ -78,7 +78,7 @@ namespace BakeryLibrary
             return worker;
         }
 
-        public string CheckIfOrderIsComplete(DateTime actualTime, Payments payments)
+        public string CheckIfOrderIsComplete(DateTime actualTime, Payment payments)
         {
             string returnString = "";
             for (int i = listOfOrders.Count - 1; i >= 0; i--)

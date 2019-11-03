@@ -39,7 +39,7 @@ namespace BakeryLibrary
             return completeTime;
         }
 
-        private List<ICake> GenerateOrder()
+        public List<ICake> GenerateOrder()
         {
             Random rnd = new Random();
             int whatToOrder = rnd.Next(1, 4);
